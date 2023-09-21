@@ -1,0 +1,30 @@
+prje fikirleri
+
+--heroku domain al
+
+--front end i işlemeye başla
+
+--instagram api ile login ekle login ile short term token al
+
+--aldığın tokenlar ile json almak için dinamik fonksiyon kur +++
+
+--jaysondan gelen verileri string linklere aktar +++
+
+--stringlerin compare i için hashset kullan    	+++
+
+--proje için db ve api kullanmam lazım bunlaraı kullanıcağım alan ara.
+
+--instagram kullınıcı adı ile yeni kullanıcı oluştur şifre 0 dan yapılcak
+
+--kullanıcının hangi günler girdiği ve işlem sayısı db de tutulacak 
+
+--kullanıcının işlm sayısına göre teşvik olulturulmalı
+
+--yeni üye davetleri için teşvik olmalı
+
+--site hakkında daha fazla araştırma yap yeni fikirler ve geliştirmeler lazım
+
+--request tekrarını azaltmak yada düzelmek için çözüm ara
+
+--response lar stackleniyo düzelmek için çözüm bul
+

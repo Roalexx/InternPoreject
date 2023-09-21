@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "uWJVQuoSQROuwmspuSJjjwp3XeDkMY/YZckIuwcDL6tT9Qsi2CnBbCQbyJsKMJ4Ffx523KRk+liTL8Bkz9RnGA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\InternPoreject\\InstagramProjectBackend\\Program\\Program\\BackendApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

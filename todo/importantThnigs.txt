@@ -1,0 +1,6 @@
+Facebook login
+instagram_graph_user_profile
+user_friends
+https://developers.facebook.com/docs/instagram-basic-display-api/reference/user				--user
+https://developers.facebook.com/docs/instagram-basic-display-api/reference/access_token			--token handle
+https://developers.facebook.com/docs/instagram-basic-display-api/reference/refresh_access_token#reading	--longterm token handler
