@@ -11,26 +11,18 @@ namespace BackendApp
 {
     public class Functions
     {  
-        public static  async Task<JObject> AsyncHttpRequest(string link, string token)
+        public static  async Task<JObject> AsyncHttpRequest(string link, string token, string cookie)
         {
             using (HttpClient client = new HttpClient())
             {
                 // HTTP Headers
-                client.DefaultRequestHeaders.Add("cookie", "mid=ZMtaqQALAAFIsrg55_kPJsY-hPgb; ig_did=89F1C663-68C0-417A-834B-B87841E39AF2; ig_nrcb=1; datr=qFrLZIMGM-iWwZy7pkG_ltkN; fbm_124024574287414=base_domain=.instagram.com; csrftoken=zE7SdCdd8Wf14jzxdExgVmzCXrk9LScL; ds_user_id=8240144112; sessionid=8240144112:6phchbPPsa4SSz:20:AYe8jjamDsa27Ck7PbcdxgRO6J15-akw0nPYaw9j4g; shbid=3313; shbts=1695131722; fbsr_124024574287414=ddDb2DnUUgI5AfeKuuEqVGnLMrVtmxdKzmvlezBx0CI.eyJ1c2VyX2lkIjoiMTAwMDA4NDY8HHHHHHHHHHHHHHH");
-                client.DefaultRequestHeaders.Add("x-ig-app-id", token);  // Değişkeni burada kullanıyoruz
+                client.DefaultRequestHeaders.Add("cookie", cookie);
+                client.DefaultRequestHeaders.Add("x-ig-app-id", token);  
 
                 HttpResponseMessage response = await client.GetAsync(link);
                 JObject jsonObject;
-                if (response.IsSuccessStatusCode)
-                {
-                    string content = await response.Content.ReadAsStringAsync();
-                    jsonObject = JObject.Parse(content);
-                }
-                else
-                {
-                    Console.WriteLine("İstek başarısız oldu. HTTP kodu: " + response.StatusCode);
-                    jsonObject = null;
-                }
+                string content = await response.Content.ReadAsStringAsync();
+                jsonObject = JObject.Parse(content);        
                 return jsonObject;
             }
         }
@@ -53,5 +45,33 @@ namespace BackendApp
             List<string> commonFollowers = followers1.ToList();            
             return commonFollowers;
         }
+        public static async void RequestCaller(string link,string token, string cookie, long count)
+        {
+            string deneme;
+            string url = link + "/following/?count=200&max_id=" + 0;
+            JObject dataInfo;
+            if (count > 1200)
+            {
+                Console.WriteLine("Takip edilen yada takipçi sayısı çok fazla");
+            }
+            else
+            {
+                long counter = count / 200;
+                long mod = count % 200;
+                for (int i = 0; i < count; i += 200)
+                {
+                   dataInfo = await  AsyncHttpRequest(url, token, cookie);
+                    deneme = dataInfo.ToString();
+                    url=link+ "/following/?count=200&max_id=" + i; 
+                    await Console.Out.WriteLineAsync(deneme);
+                }
+                url = link + "/following/?count=200&max_id=" + (count - mod);
+                dataInfo = await AsyncHttpRequest(url, token, cookie);
+                deneme = dataInfo.ToString();
+                await Console.Out.WriteLineAsync(deneme);
+            }
+
+        }
+
     }
 }
